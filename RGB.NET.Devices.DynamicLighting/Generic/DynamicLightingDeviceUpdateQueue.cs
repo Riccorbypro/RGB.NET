@@ -42,12 +42,18 @@ public sealed class DynamicLightingDeviceUpdateQueue : UpdateQueue
     #region Methods
 
     /// <inheritdoc />
-    protected override bool Update(in ReadOnlySpan<(object key, Color color)> dataSet)
+    protected override bool Update(ReadOnlySpan<(object key, Color color)> dataSet)
     {
         try
         {
             if (_isDisposed) throw new ObjectDisposedException(nameof(DynamicLightingDeviceUpdateQueue));
             if (!_lampArray.IsConnected) return false;
+            if (!_lampArray.IsAvailable)
+            {
+                // To set colours on the lamp array, we need to have background access to the device.
+                // If we don't have access, we can't set the colours, so no need to try.
+                return false;
+            }
 
             // ReSharper disable once ForCanBeConvertedToForeach - Prevent a possible allocation of an enumerator
             for (int i = 0; i < dataSet.Length; i++)
