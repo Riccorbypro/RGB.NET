@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>DLTestApp</AssemblyName>
+        <ProductName>DLTestApp</ProductName>
+        <AppxPackageName>DLTestApp</AppxPackageName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RGB.NET.Core\RGB.NET.Core.csproj" />
+      <ProjectReference Include="..\RGB.NET.Devices.DynamicLighting\RGB.NET.Devices.DynamicLighting.csproj" />
+      <ProjectReference Include="..\RGB.NET.Presets\RGB.NET.Presets.csproj" />
+    </ItemGroup>
+
+
+</Project>
